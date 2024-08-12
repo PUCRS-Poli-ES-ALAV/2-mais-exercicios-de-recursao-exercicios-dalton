@@ -120,6 +120,18 @@ public static String convBase2(int n){
 
 }
 
+ou:
+
+    public static String convBase2(int n){
+        if(n == 0)
+            return "0";
+        else if (n == 1)
+            return "1";
+        else
+            return convBase2(n/2).concat(convBase2(n%2));
+    }
+
+
 //Modele e implemente um método recursivo 
 //que calcule o somatório dos números contidos em um 
 //ArrayList de inteiros, passado como parâmetro.
@@ -133,6 +145,23 @@ n.remove(n.size() - 1);
 return last + somaArray(n);
 }
 
+ou:
+
+    public static int somaArray(int[] array){
+        if (array.length == 0)
+            return 0;
+        return somaArrayAux(array, 0, 0);
+    }
+
+    private static int somaArrayAux(int[] array, int pos, int sum){
+        if(pos<array.length){
+            sum += array[pos];
+            pos++;
+            return somaArrayAux(array, pos, sum);
+        }
+
+        return sum;
+    }
 
 public static int findBiggest(ArrayList<Integer> ar){
     if(ar.isEmpty()) return 0;
