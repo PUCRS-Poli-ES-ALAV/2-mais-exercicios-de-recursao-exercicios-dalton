@@ -45,60 +45,110 @@ Os exercícios:
 	  ``` 
          ArrayList<String> permutations(String s)
 	  ``` 
-public class aula0708 {
-    public static void main(String[] args) {
-        System.out.println(convBase2(10));
+
+import java.util.ArrayList;
+
+public class Aula { 
+    public static void main(String[] args) { 
+        String binario = convBase2(10);
+        System.out.println(binario); 
     }
+}
 
-    // Calcule o fatorial de um número n passado como parâmetro
-    public static int fatorial(int n) { // Assinatura
-        // Método
-        if (n == 1)
-            return 1;
-        if (n <= 0)
-            throw new IllegalArgumentException("Número inválido");
-        return n * fatorial(n - 1);
-    }
+// Calcule o fatorial de um número n passado como parâmetro
+public static int fatorial(int n) { 
+    // Assinatura
+    // Método
+    if (n == 1)
+        return 1;
+    if (n <= 0)
+        throw new IllegalArgumentException("Número inválido");
+    return n * fatorial(n - 1);
+}
 
-    // Calcule o somatório de um número n até 0.
-    public static int somatorio(int n) {
-        if (n == 0)
-            return n;
-        return n + somatorio(n - 1);
-    }
+// Calcule o somatório de um número n até 0.
+public static int somatorio(int n) {
+    if (n == 0)
+        return n;
+    return n + somatorio(n - 1);
+}
 
-    // Calcule o n-ésimo número da sequência de fibonacci
-    public static int fibonacci(int n) {
-        if (n == 0)
-            return 0;
-        if (n == 1)
-            return 1;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
+// Calcule o n-ésimo número da sequência de fibonacci
+public static int fibonacci(int n) {
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-    // Calcule o somatório dos número inteiros entre os números k e j, passados como
-    // parâmetro.
-    public static int somatorioKJ(int k, int j) {
-        if (k == j)
-            return j;
-        if (k < j)
-            return k + somatorioKJ(k + 1, j);
-        return somatorioKJ(j, k);
-    }
+// Calcule o somatório dos número inteiros entre os números k e j, passados como
+// parâmetro.
+public static int somatorioKJ(int k, int j) {
+    if (k == j)
+        return j;
+    if (k < j)
+        return k + somatorioKJ(k + 1, j);
+    return somatorioKJ(j, k);
+}
 
-    // Recebe um string e retorna true se este string for um palíndrome, false caso
-    // contrário
-    public static boolean isPal(String s) {
-        if (s.length() == 0)
-            return false;
-        if (s.length() <= 1)
-            return true;
+// Recebe um string e retorna true se este string for um palíndrome, false caso
+// contrário
+public static boolean isPal(String s) {
+    if (s.length() == 0)
+        return false;
+    if (s.length() <= 1)
+        return true;
 
-        char init = s.charAt(0);
-        char last = s.charAt(s.length() - 1);
-        if (last != init)
-            return false;
+    char init = s.charAt(0);
+    char last = s.charAt(s.length() - 1);
+    if (last != init)
+        return false;
 
-        return isPal(s.substring(1, s.length() - 1));
+    return isPal(s.substring(1, s.length() - 1));
 
-    }
+}
+
+
+public static String convBase2(int n){
+    if(n < 0) return null;
+    if(n == 0) return "0";
+    if(n == 1) return "1";
+
+
+    return convBase2(n/2) + (n%2);
+
+}
+
+//Modele e implemente um método recursivo 
+//que calcule o somatório dos números contidos em um 
+//ArrayList de inteiros, passado como parâmetro.
+public static int somaArray(ArrayList n){
+if(n.isEmpty()) return 0;
+
+int last = n.get(n.size() - 1);
+
+n.remove(n.size() - 1);
+
+return last + somaArray(n);
+}
+
+
+public static int findBiggest(ArrayList<Integer> ar){
+    if(ar.isEmpty()) return 0;
+    if(ar.size()==1) return ar.get(0);
+
+    if(ar.get(ar.size()) <= ar.get(ar.size()-1)){
+    ar.remove(ar.size());
+    }else ar.remove(ar.size()-1);
+
+ return findBiggest(ar);
+
+}
+
+public static boolean findSubStr(String str, String match){
+    
+
+}
+
+
